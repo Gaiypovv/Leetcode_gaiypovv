@@ -1,0 +1,14 @@
+class Solution {
+    func lengthOfLastWord(_ s: String) -> Int {
+        var counter = 0 
+        for elem in s.reversed() {
+            if elem != " " {
+                counter += 1
+            }
+            if elem == " " && counter > 0{
+                return counter 
+            }
+        }
+        return counter
+    }
+}
