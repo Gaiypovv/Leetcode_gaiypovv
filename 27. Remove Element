@@ -1,5 +1,4 @@
-
-    class Solution {
+class Solution {
     func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
         var slow = 0
         for fast in 0..<nums.count {
