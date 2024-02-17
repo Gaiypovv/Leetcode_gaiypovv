@@ -1,0 +1,6 @@
+class Solution {
+    func isPalindrome(_ s: String) -> Bool {
+        let filteredString = s.compactMap { $0.isLetter || $0.isNumber ? $0.lowercased() : nil }.joined()
+        return filteredString == String(filteredString.reversed())
+    }
+}
