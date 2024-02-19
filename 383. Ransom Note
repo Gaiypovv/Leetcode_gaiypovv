@@ -1,0 +1,22 @@
+class Solution {
+    func canConstruct(_ ransomNote: String, _ magazine: String) -> Bool {
+        var magazineLetterCounts = [Character: Int]()
+        
+        // Count the occurrences of each letter in magazine
+        for letter in magazine {
+            magazineLetterCounts[letter, default: 0] += 1
+        }
+        
+        // Check if ransomNote can be constructed
+        for letter in ransomNote {
+            // If the letter does not exist in magazine or its count is 0, return false
+            if let count = magazineLetterCounts[letter], count > 0 {
+                magazineLetterCounts[letter]! -= 1
+            } else {
+                return false
+            }
+        }
+        
+        return true
+    }
+}
