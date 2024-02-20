@@ -1,0 +1,28 @@
+class Solution {
+    func isIsomorphic(_ s: String, _ t: String) -> Bool {
+        var mapSToT = [Character: Character]()
+        var mapTToS = [Character: Character]()
+        
+        for (charS, charT) in zip(s, t) {
+            // Check if there's an existing mapping from S to T
+            if let mappedChar = mapSToT[charS] {
+                if mappedChar != charT {
+                    return false
+                }
+            } else {
+                mapSToT[charS] = charT
+            }
+            
+            // Check if there's an existing mapping from T to S
+            if let mappedChar = mapTToS[charT] {
+                if mappedChar != charS {
+                    return false
+                }
+            } else {
+                mapTToS[charT] = charS
+            }
+        }
+        
+        return true
+    }
+}
