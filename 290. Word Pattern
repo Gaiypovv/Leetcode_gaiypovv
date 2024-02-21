@@ -1,0 +1,25 @@
+class Solution {
+    func wordPattern(_ pattern: String, _ s: String) -> Bool {
+        let words = s.split(separator: " ").map(String.init)
+        guard pattern.count == words.count else { return false }
+
+        var charToWord = [Character: String]()
+        var wordToChar = [String: Character]()
+
+        for (char, word) in zip(pattern, words) {
+            if let mappedWord = charToWord[char], mappedWord != word {
+                return false
+            } else {
+                charToWord[char] = word
+            }
+
+            if let mappedChar = wordToChar[word], mappedChar != char {
+                return false
+            } else {
+                wordToChar[word] = char
+            }
+        }
+
+        return true
+    }
+}
